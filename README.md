@@ -113,7 +113,7 @@ function duplicateCount(text){
   var count = 0;
   var used = [];// to put the duplicates in
   // make it lowercase, split it into individual letters to be able to sort it alphabetically and then join them back together in a single string
-  sortedStr = text.toLowerCase().split('').sort().join('');
+  var sortedStr = text.toLowerCase().split('').sort().join('');
 
   // loop through the sorted string to compare the current with next iterator;
   // don't push the letter that is already in the used array
