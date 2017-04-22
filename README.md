@@ -105,3 +105,33 @@ function array_diff(a, b) {
 }
 array_diff([1,2,2], [2]); // gives [1]
 ```
+### Count duplicates in a string
+*using for loop*
+```javascript
+function duplicateCount(text){
+
+  var count = 0;
+  var used = [];// to put the duplicates in
+  // make it lowercase, split it into individual letters to be able to sort it alphabetically and then join them back together in a single string
+  sortedStr = text.toLowerCase().split('').sort().join('');
+
+  // loop through the sorted string to compare the current with next iterator;
+  // don't push the letter that is already in the used array
+  for(var i = 0; i < sortedStr.length; i++) {
+    if (sortedStr[i] == sortedStr[i+1]  && sortedStr[i] != used) {
+      used.push(sortedStr[i]);
+      count++;
+    }
+  }
+  return count;// or return used to see the duplicated letters
+}
+duplicateCount("abbbbccww")); // used = ["b","c","w"]; count = 3;
+```
+*using forEach*
+```javascript
+function duplicateCount(text) {
+  var dup = [];
+  text.toLowerCase().split('').forEach(function(v, i, arr) {if(i != arr.lastIndexOf(v) && dup.indexOf(v) == -1) dup.push(v);});
+  return dup.length;
+}
+```
