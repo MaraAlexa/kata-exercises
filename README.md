@@ -105,7 +105,7 @@ function array_diff(a, b) {
 }
 array_diff([1,2,2], [2]); // gives [1]
 ```
-### Count duplicates in a string
+### 5. Count duplicates in a string
 *using for loop*
 ```javascript
 function duplicateCount(text){
