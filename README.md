@@ -182,14 +182,64 @@ function palindrome(str) {
   // make a var for all unwanted characters like space, comas,etc (RegExp)
  var re = /[\W_]/g;
 
-  // lowercase and replace re with nothing: =>"a man, an apple" = "amanaapple"
+  // lowercase and get rid of unwanted characters: =>"a man, an apple" = "amanaapple"
  var lowRegStr = str.toLowerCase().replace(re, '');
 
-  // reverse each of its letter and put it back togeteher
+  // reverse the string (need an array of string to be able to reverse it)
  var reverseStr = lowRegStr.split('').reverse().join('');
-  // compare them
+  // compare the reverse str with the original
  return reverseStr === lowRegStr; //return true if it is a palindrome
 
 }
 palindrome("eye");
+```
+### 3. Return the length of the longest word in the provided sentence.
+```javascript
+function findLongestWord(str) {
+  var longestWord = str.split(' '); // split into an array of string
+
+  longestWord.sort(function(a, b){
+
+    if ( b.length > a.length){
+      return 1; // goes first
+    } else {
+      return -1;// stays behind
+    }
+  });
+  // var longestWord = ["javascript", "ruby", "love", ...]
+
+  return longestWord[0].length; // return the first item from the array
+
+}
+
+findLongestWord("I love javascript and ruby");
+// get 10 -> the length of "javascript"
+```
+### 4. Title Case a Sentence (capitalize the first letter of each word. )
+```javascript
+function titleCase(str) {
+  // make all characters lower case
+  str = str.toLowerCase() // i'm alittle tea pot
+  // split the string into an array of strings
+           .split(' ')
+  // turn first letter of each word into upper case
+           .map(function(word){
+              return (word.charAt(0).toUpperCase() + word.slice(1));
+    /*
+    1st word: "i'm"    =>  "i'm".charAt(0).toUpperCase() + "i'm".slice(1);
+                                "I"                     +     "'m";
+                                                  return "I'm";
+
+    3rd word: "a"      => "little".charAt(0).toUpperCase()   + "".slice(1);
+                                "L"                     +     "ittle";
+                                              return "Little";
+    */
+            });
+  // return the output of each word together
+  return str.join(' '); // ["I'm", "A", "Little", "Tea", "Pot"].join(' ') => "I'm A Little Tea Pot"
+
+}
+
+titleCase("I'm a little tea pot"); // 'I'm A Little Tea Pot'
+
 ```
