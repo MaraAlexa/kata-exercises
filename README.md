@@ -135,3 +135,61 @@ function duplicateCount(text) {
   return dup.length;
 }
 ```
+### 6. Simple change machine
+*using switch*
+```javascript
+function changeMe(moneyIn){
+  // Write your function here
+  switch(moneyIn) {
+  case '£5':
+  var charge = Array(25).fill('20p');
+  return charge.join(' ')
+
+  case '£2':
+  var charge = Array(10).fill('20p');
+  return charge.join(' ')
+
+  case '£1':
+  var charge = Array(5).fill('20p');
+  return charge.join(' ')
+
+  case '50p':
+  return '20p 20p 10p'
+
+  case '20p':
+  var charge = Array(2).fill('10p');
+  return charge.join(' ')
+
+  default:
+   return moneyIn}
+}
+
+```
+## Basic Algorithms
+### 1.Reverse a string
+```javascript
+function reverseString(str) {
+  //["h", "e", 'l','o','o'].reverse().join('')
+  return Array.from(str).reverse().join('');
+}
+
+reverseString("hello");
+```
+### 2.Check for Palindromes
+*A palindrome is a word or sentence that's spelled the same way both forward and backward, ignoring punctuation, case, and spacing.*
+```javascript
+function palindrome(str) {
+  // make a var for all unwanted characters like space, comas,etc (RegExp)
+ var re = /[\W_]/g;
+
+  // lowercase and replace re with nothing: =>"a man, an apple" = "amanaapple"
+ var lowRegStr = str.toLowerCase().replace(re, '');
+
+  // reverse each of its letter and put it back togeteher
+ var reverseStr = lowRegStr.split('').reverse().join('');
+  // compare them
+ return reverseStr === lowRegStr; //return true if it is a palindrome
+
+}
+palindrome("eye");
+```
