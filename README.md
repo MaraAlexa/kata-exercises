@@ -220,7 +220,7 @@ findLongestWord("I love javascript and ruby");
 function titleCase(str) {
   // make all characters lower case
   str = str.toLowerCase() // i'm alittle tea pot
-  // split the string into an array of strings
+  // split the sentence into an array of words
            .split(' ')
   // turn first letter of each word into upper case
            .map(function(word){
@@ -242,4 +242,28 @@ function titleCase(str) {
 
 titleCase("I'm a little tea pot"); // 'I'm A Little Tea Pot'
 
+```
+## Kata Exercises
+### Make a class in ES6 with proprieties, methods and static methods
+```javascript
+class Person {
+  constructor(firstName, lastName, age, gender){
+    // || 'John' used to give default values; in case you don't give it your own name
+    this.firstName = firstName || "John";
+    this.lastName = lastName || "Doe";
+    this.age = age || 0;
+    this.gender = gender || "Male";
+  }
+
+  sayFullName(){
+    return `${ this.firstName } ${ this.lastName }`;
+  }
+  // with static you create methods that are ONLY available to the class Person; cannot be called on instances of the class
+  static greetExtraTerrestrials(raceName){
+    return `Welcome to Planet Earth ${ raceName }`;
+  }
+}
+
+const myperson = new Person('mara', 'alexa', 28, 'Female');
+Person.greetExtraTerrestrials('Martians');
 ```
