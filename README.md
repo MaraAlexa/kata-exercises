@@ -267,3 +267,42 @@ class Person {
 const myperson = new Person('mara', 'alexa', 28, 'Female');
 Person.greetExtraTerrestrials('Martians');
 ```
+### Check if a coupon code is valid and not expired
+```javascript
+function checkCoupon(enteredCode, correctCode, currentDate, expirationDate){
+
+  currentDate = Date.parse(currentDate);
+  expirationDate = Date.parse(expirationDate);
+
+  if(currentDate <= expirationDate && enteredCode === correctCode){
+    return true;
+  } else{
+    return false;
+  }
+}
+checkCoupon('123','123','September 5, 2014','October 1, 2014'); // true
+checkCoupon('123a','123','September 5, 2014','October 1, 2014'); // false
+```
+### Mumbling function
+```
+accum("abcd");    // "A-Bb-Ccc-Dddd"
+accum("RqaEzty"); // "R-Qq-Aaa-Eeee-Zzzzz-Tttttt-Yyyyyyy"
+accum("cwAt");    // "C-Ww-Aaa-Tttt"
+```
+```javascript
+function accum(s) {
+  var letters = s.split(''); // ["a","b",...]
+  var str =[];
+  
+  for( var i= 0; i< letters.length; i++){
+  	str.push(letters[i].toUpperCase() + letters[i].toLowerCase().repeat(i));
+    // letters[i] = a b c d;
+    // i = index of i = 0 1 2 3
+    // loop1: a + a.repeat(0) => a
+    // loop2: b + b.repeat(1) => bb
+    //loop 3: c + c.repeat(2) => ccc; etc...
+  }
+  return str.join('-');
+}
+accum("abcd"); //"A-Bb-Ccc-Dddd"
+```
