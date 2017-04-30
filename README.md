@@ -293,7 +293,7 @@ accum("cwAt");    // "C-Ww-Aaa-Tttt"
 function accum(s) {
   var letters = s.split(''); // ["a","b",...]
   var str =[];
-  
+
   for( var i= 0; i< letters.length; i++){
   	str.push(letters[i].toUpperCase() + letters[i].toLowerCase().repeat(i));
     // letters[i] = a b c d;
@@ -305,4 +305,49 @@ function accum(s) {
   return str.join('-');
 }
 accum("abcd"); //"A-Bb-Ccc-Dddd"
+```
+### List Filtering to return only integers
+*ES6*
+```javascript
+function filter_list(l) {
+  return l.filter(item => typeof(item) == "number");
+}
+//filter_list([1,2,'aasf','1','123',123]) => get [1,2,123]
+```
+*ES5 - by checking against strings*
+```javascript
+function filter_list(l) {
+  return l.filter(function(elem){
+    return typeof elem != "string"
+  } )
+}
+```
+### Sum the last 2 lowest numbers in an Array
+*using .sort()*
+```javascript
+function sumTwoSmallestNumbers(numbers) {  
+  //sort the numbers from lowest to highest
+  numbers = numbers.sort(function(a, b){return a - b; }); // [5,8,12,19,22]
+
+  // return the sum of last two
+  return numbers[0] + numbers[1]; // 5 + 8
+};
+console.log(sumTwoSmallestNumbers([5, 12, 8, 22, 19])); // 13
+```
+### Regex password validation
+*in one line*
+```javascript
+function validate(password) {
+//Minimum 6 characters at least 1 Uppercase Alphabet, 1 Lowercase Alphabet and 1 Number
+  return /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{6,}$/.test(password);
+}
+```
+*check for each condition*
+```javascript
+function validate(password) {
+  return  /^[A-Za-z0-9]{6,}$/.test(password) && // min 6 alphanumerical characters
+          /[A-Z]+/           .test(password) && // min 1 Upper case letter
+          /[a-z]+/           .test(password) && // min 1 Lower case letter
+          /[0-9]+/           .test(password) ;  // min 1 Number
+}
 ```
