@@ -28,7 +28,7 @@ gooseFilter(["Mallard", "Hook Bill", "African", "Crested", "Pilgrim", "Toulouse"
 
 ```
 ### 2. Sum the first nth term of Series
-** Your task is to write a function which returns the sum of following series upto nth term(parameter).**
+**Your task is to write a function which returns the sum of following series upto nth term(parameter).**
 ```
 SeriesSum(1) => 1 = "1"
 SeriesSum(2) => 1 + 1/4 = "1.25"
@@ -49,8 +49,7 @@ function SeriesSum(n) {
 ```
 
 ### 3. Printer Errors
-**
-A function that takes in a string of letters from a to z  and outputs an error rate whose numerator is the number of errors and the denominator the length of the control string.**
+**A function that takes in a string of letters from a to z  and outputs an error rate whose numerator is the number of errors and the denominator the length of the control string.**
 
 ```
 s="aaabbbbhaijjjm"
@@ -350,4 +349,71 @@ function validate(password) {
           /[a-z]+/           .test(password) && // min 1 Lower case letter
           /[0-9]+/           .test(password) ;  // min 1 Number
 }
+```
+
+### Selling tickets to people that have bills of 25, 50 and 100 dollars. The seller has no initial change. Check if he can give change to everyone in the line
+```
+tickets([25, 25, 50]) // => YES
+tickets([25, 100])    
+        // => NO. Vasya will not have enough money to give change to 100 dollars
+```
+```javascript
+function tickets(peopleInLine){
+   var m25 = 0, m50 = 0;
+
+    for (var i = 0; i < peopleInLine.length; i++) {
+        switch(peopleInLine[i]){
+            case 25:
+                m25++;
+                break;
+            case 50:
+                m25 > 0 ? m25-- : m25 = -1;
+                m50++;
+                break;
+            case 100:
+                m25 > 0 && m50 > 0 ? m50-- : (m25 > 2 ? m25 -= 2 : m25 = -1);
+                m25--;
+                break;
+        }
+    }
+    return m25 < 0 ? "NO" : "YES";
+}
+```
+### Greet a person; make sure the input its not an empty string or null
+*basic solution*
+```javascript
+function greet(name) {
+  if(name === '' || name === null){
+    return null;
+  } else {
+    return `hello ${name}!`
+  }
+}
+```
+*clever solution*
+```javascript
+function greet(name) {
+  return name ? `hello ${name}!` : null;
+}
+```
+### Square each digid of a number
+```
+Test.assertEquals(squareDigits(9119), 811181);
+```
+*using for loop*
+```javascript
+function squareDigits(num){
+    // convert num to a String of numbers
+    var string = num.toString(); // "9119"
+    // make an empty array to put the results
+    var results = [];
+
+    //loop through the string of numbers
+    for (var i = 0; i < string.length; i++){
+        // convert each digid to its square: 9*9;  1*1; etc
+        results[i] = string[i] * string[i];
+    }
+    // join the results and convert them to NUmber
+    return Number(results.join(''));
+};
 ```
