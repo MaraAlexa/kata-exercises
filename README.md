@@ -417,3 +417,50 @@ function squareDigits(num){
     return Number(results.join(''));
 };
 ```
+### Find the missing integer from a sequence of numbers in a string
+```javascript
+function findMissingNumber(sequence){
+
+ // split the string into an array of strings: ["1", "2", "3", "5"]
+ // than covert it into an array of numbers
+ var arr = sequence.split(' ').map(Number);// [1, 2, 3, 5]
+   // covers invalid sequences
+  if(sequence.length == 0){
+    return 0; // if an empty str is given
+  }
+  else if(/[a-z]/ig.test(sequence) === true){ // if letters are given
+    return 1;
+  }
+
+  // the SOLUTION once you have a valid sequence :[1, 2, 3, 5]
+  for(var i = 1; i <= arr.length; i++){// iterator = 1 2 3 4
+    if(arr.indexOf(i) === -1){// if indexOf(4) does not exist
+     return i;// return 4
+    }
+  }
+  // for the already complete sequence(or empty)
+  return 0
+}
+//findMissingNumber("1 2 3 5") =>gives 4
+//findMissingNumber("2 6 4 5 3") => gives 1
+```
+### Write Number in Extended form
+```javascript
+function expandedForm(num) {
+  num = num.toString().split('');
+  console.log(num);//  ["1", "2", "0", "6", "6"]
+
+  num = num.map((num, index, arr) => num + "0".repeat(arr.length - index -1 ));// 0*(5-0-1)=0*4; 0*(5-1-1)=0*3
+  console.log(num); //["10000", "2000", "000", "60", "6"]
+
+  num = num.filter(a => a > 0);// filter out the "0 strings"
+  console.log(num);//["10000", "2000", "60", "6"]
+
+  num = num.join(" + ");
+  console.log(num); // 10000 + 2000 + 60 + 6
+
+}
+
+console.log(expandedForm(12066));// 10000 + 2000 + 60 + 6
+
+```
