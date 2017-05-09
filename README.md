@@ -464,3 +464,29 @@ function expandedForm(num) {
 console.log(expandedForm(12066));// 10000 + 2000 + 60 + 6
 
 ```
+### Sort ascending odd numbers and leave even numbers at their position
+```
+example:
+sortArray([5, 3, 2, 8, 1, 4]) == [1, 3, 2, 8, 5, 4]
+```
+```javascript
+function sortArray(array) {
+  // filter for the odd numbers and sort it (ascending)
+
+  const odd = array.filter((x) => x % 2)
+                   .sort((a,b) => a - b);
+  console.log(odd);// [1, 3, 5]
+
+  // for each x in the array, if x is even return  [1, 3, 5].shift(); else return x
+  return array.map((x) => x % 2 ? odd.shift() : x);
+   // 1) for 5(odd) return [1, 3, 5].shift() ->[1]
+	// 2) for 3(odd)  return   [3, 5].shift() ->[3]
+    // 3) for 2(even) return                2 ->[2]
+    // 4) for 8(even) return                8 ->[8]
+    // 5) for 1(odd)  return      [5].shift() ->[5]
+    // 6) for 4(even) return                4 ->[4]
+}
+
+console.log(sortArray([5, 3, 2, 8, 1, 4])); //[1, 3, 2, 8, 5, 4]
+
+```
