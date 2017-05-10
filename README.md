@@ -494,6 +494,7 @@ console.log(sortArray([5, 3, 2, 8, 1, 4])); //[1, 3, 2, 8, 5, 4]
 ```
 toLeetSpeak("LEET") returns "1337"
 ```
+*using for look*
 ```javascript
 function toLeetSpeak(str) {
   var letSpeak = {
@@ -534,4 +535,38 @@ function toLeetSpeak(str) {
 }
 
 console.log(toLeetSpeak('CODEWARS')); // "(0D3W@R$"
+```
+*using replace*
+```javascript
+function toLeetSpeak(str) {
+  const alphabet = {
+  A : '@',
+  B : '8',
+  C : '(',
+  D : 'D',
+  E : '3',
+  F : 'F',
+  G : '6',
+  H : '#',
+  I : '!',
+  J : 'J',
+  K : 'K',
+  L : '1',
+  M : 'M',
+  N : 'N',
+  O : '0',
+  P : 'P',
+  Q : 'Q',
+  R : 'R',
+  S : '$',
+  T : '7',
+  U : 'U',
+  V : 'V',
+  W : 'W',
+  X : 'X',
+  Y : 'Y',
+  Z : '2'
+}
+  return str.replace(/[A-Z]/g, char => alphabet[char]);
+}
 ```
